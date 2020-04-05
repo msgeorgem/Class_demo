@@ -9,8 +9,8 @@
   </head>
   <body>
     <div id="error" class="hidden">Something went wrong!</div>
-    <form id="form" method="post" action="/todos/create">
-      <input type="text" id="description" name="description" />
+    <form id="form">
+      <input type="text" id="description" name="description"/> description
       <input type="submit" value="Create" />
     </form>
     <ul id="todos">
@@ -35,7 +35,7 @@
         })
         .then(function(jsonResponse) {
           console.log(jsonResponse);
-          const liItem = document.createElement('LI')
+          const liItem = document.createElement('LI');
           liItem.innerHTML = jsonResponse['description'];
           document.getElementById('todos').appendChild(liItem);
           document.getElementById('error').className = 'hidden';

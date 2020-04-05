@@ -1,4 +1,5 @@
 import sys
+
 from flask import Flask, render_template, request, jsonify, abort  # install with pip
 from flask_sqlalchemy import SQLAlchemy
 
@@ -22,13 +23,12 @@ class Todo(db.Model):
 
 db.create_all()
 
-
 @app.route('/todos/create', methods=['POST'])  # methods not method!!!
 def create_todo():
     error = False
     body = {}
     try:
-        description = request.form.get_json()['description']
+        description = request.get_json()['description']
         todo = Todo(description=description)
         db.session.add(todo)
         db.session.commit()
